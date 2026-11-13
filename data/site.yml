@@ -1,0 +1,18 @@
+# General text on the website: the big statement, About paragraph, openings and contact details.
+# Photos named here live in images/site/
+
+statement: We fundamentally understand, optimize and fabricate industrial-grade films for (opto)electronic applications, from the vacuum chamber to the interface.
+about: (Opto)electronics and Thin Films Laboratory (OTFL) was established in July 2011. The primary research focus of our group is to fundamentally understand, optimize and fabricate industrial-grade films for (opto)electronic applications. To this end, our group is involved in fabricating films using both the vacuum and non-vacuum based synthesis techniques. The second focus of the research group is to understand the role of the interfaces in developing the microstructure of the ultra-thin films on a substrate surface. To this end, detailed thermodynamic analysis taking into account the energies of the interfaces (i.e., energy of the substrate/film interface and energy of the film/vacuum interface) aside from the bulk Gibbs free energy of the film are used to estimate the total Gibbs free energy. The phase transformation in these thin films is then investigated with respect to a wide range of model parameters. The theoretical predictions are finally verified with the experimentally obtained results.
+about_figure: about-figure.jpg
+about_figure_caption: 'Doped VO2: experiment and computation'
+hero_photo: hero.jpg
+hero_caption: Multi-target RF magnetron sputtering
+group_photo: group.jpg
+openings: There are several openings at various levels (Postdocs, PhD, MTech, SRF/JRF) in our research group. A very good educational background, along with a high level of motivation, is strongly desired. Interested candidates can write directly to Prof. Emila Panda with their complete biodata and cover letter.
+email: emila@iitgn.ac.in
+address:
+- Dr Emila Panda
+- AB-11/306A
+- Professor, Materials Engineering
+- IIT Gandhinagar, Gujarat 382055
+maps_link: https://maps.google.com/?q=Indian+Institute+of+Technology+Gandhinagar,+Palaj,+Gujarat+382355

@@ -1,0 +1,35 @@
+# LAB FACILITIES. Photos go in images/facilities/
+# To add an instrument: copy a "- name:" + "photo:" pair, paste it in the right group, edit it.
+
+- group: Fabrication and post-processing facilities
+  items:
+  - name: Multi-target RF magnetron sputtering system equipped with an in situ annealing system (Excel Instruments)
+    photo: sputter-excel-1.jpg
+  - name: Multi-target RF magnetron sputtering system (Milman Thin Film Systems)
+    photo: sputter-milman.jpg
+  - name: Multi-target RF magnetron sputtering system equipped with an in situ annealing system (Excel Instruments)
+    photo: sputter-excel-2.jpg
+  - name: Vacuum annealing furnace
+    photo: annealing-furnace.jpg
+  - name: Spin coating system (EZSpin A1 - Apex Instruments)
+    photo: spin-coater.jpg
+  - name: UV curing system (254 nm and 365 nm - Apex Instruments)
+    photo: uv-curing.jpg
+- group: Optical and electrical characterization facilities
+  items:
+  - name: UV-Vis-NIR Spectrophotometer (Solid-State, DRA)
+    photo: uv-vis-nir.jpg
+  - name: Hall effect measurement system
+    photo: hall-effect.jpg
+- group: Microstructural characterization facilities (CIF)
+  items:
+  - name: Multipurpose X-Ray Diffractometer
+    photo: xrd.jpg
+  - name: Scanning Electron Microscope
+    photo: sem.jpg
+  - name: Transmission Electron Microscope
+    photo: tem.jpg
+  - name: Atomic force microscope
+    photo: afm.jpg
+  - name: Cryogen Free Measurement System
+    photo: cryogen-free.jpg

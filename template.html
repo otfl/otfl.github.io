@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTFL · (Opto)electronics and Thin Films Laboratory, IIT Gandhinagar</title>
+<meta name="description" content="(Opto)electronics and Thin Films Laboratory, Materials Engineering, IIT Gandhinagar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: quiet white pages, one dark "vacuum chamber" world that opens and closes the story, plasma glow as the only colour. */
+  --bg:#fbfbfd; --paper:#ffffff; --ink:#1d1d1f; --muted:#6e6e73; --faint:#a1a1a6; --line:#e4e4ea;
+  --night:#0b0b10; --night-2:#16161d; --on-night:#f5f5f7; --on-night-muted:#a1a1aa;
+  --plasma:#9b5cff; --plasma-2:#ff4fd2;
+  --display:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --wrap:min(1160px, calc(100vw - 48px));
+  --ease:cubic-bezier(.22,.8,.2,1);
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+sub{font-size:.7em;line-height:0}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.02em}
+.wrap{width:var(--wrap);margin-inline:auto}
+:focus-visible{outline:2px solid var(--plasma);outline-offset:3px;border-radius:6px}
+section{scroll-margin-top:64px}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;height:56px;display:flex;align-items:center;transition:background .4s var(--ease),border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(251,251,253,.78);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom-color:rgba(0,0,0,.06)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:-.01em}
+.brand img{height:30px;width:auto;border-radius:6px;background:#fff;padding:2px 4px}
+.brand span{color:var(--on-night);transition:color .4s}
+.nav.solid .brand span{color:var(--ink)}
+.links{display:flex;gap:22px;font-size:.84rem}
+.links a{text-decoration:none;color:rgba(245,245,247,.78);transition:color .3s}
+.nav.solid .links a{color:var(--muted)}
+.links a:hover,.links a.on{color:var(--on-night)}
+.nav.solid .links a:hover,.nav.solid .links a.on{color:var(--ink)}
+.menu{display:none;background:none;border:0;color:var(--on-night);font:inherit;font-size:.9rem;cursor:pointer;padding:8px}
+.nav.solid .menu{color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:230vh;background:var(--night);color:var(--on-night);--p:0}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.glow{position:absolute;inset:-20%;background:
+  radial-gradient(40% 35% at 30% 30%, rgba(155,92,255,.35), transparent 70%),
+  radial-gradient(35% 30% at 72% 38%, rgba(255,79,210,.22), transparent 70%);
+  filter:blur(20px);animation:drift 14s ease-in-out infinite alternate;opacity:calc(1 - var(--p))}
+@keyframes drift{to{transform:translate3d(4%,-3%,0) scale(1.08)}}
+.htext{position:absolute;left:0;right:0;top:calc(13vh - var(--p) * 90px);text-align:center;opacity:calc(1 - var(--p) * 1.8);padding:0 20px;z-index:2}
+.eyebrow{color:var(--on-night-muted);display:block;margin-bottom:18px}
+.htext h1{font-size:clamp(2.3rem,6.2vw,5.4rem);font-weight:650;line-height:1.02;letter-spacing:-.035em}
+.htext h1 em{font-style:normal;background:linear-gradient(90deg,#c9a7ff,#ff8ae2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.htext p{margin-top:18px;color:var(--on-night-muted);font-size:clamp(1rem,1.6vw,1.2rem)}
+.frame{position:absolute;left:50%;bottom:calc(5vh * (1 - var(--p)));transform:translateX(-50%);
+  width:calc(min(940px,88vw) + (100vw - min(940px,88vw)) * var(--p));
+  height:calc(48vh + 52vh * var(--p));border-radius:calc(26px * (1 - var(--p)));overflow:hidden;
+  box-shadow:0 40px 120px -30px rgba(155,92,255,.45)}
+.frame img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1.12 - .12 * var(--p)))}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55))}
+.fcap{position:absolute;left:0;right:0;bottom:28px;z-index:2;text-align:center;opacity:calc((var(--p) - .65) * 3);color:#fff}
+.fcap span{display:block;color:rgba(255,255,255,.7)}
+.fcap b{font-weight:600;font-size:clamp(1rem,2vw,1.4rem)}
+.scrollhint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);color:var(--on-night-muted);opacity:calc(1 - var(--p)*4);z-index:3}
+
+/* ---------- statement ---------- */
+.statement{padding:150px 0 90px;background:var(--bg)}
+.statement .kick{color:var(--muted);margin-bottom:28px;display:block}
+.say{font-size:clamp(1.7rem,3.6vw,3rem);line-height:1.18;font-weight:600;letter-spacing:-.025em;max-width:30ch}
+.say .w{color:var(--faint);transition:color .35s}
+.say .w.lit{color:var(--ink)}
+.say.static .w{color:var(--ink)}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;margin-top:90px}
+.about-grid p{color:var(--muted);max-width:62ch}
+.about-grid figure{margin:0;background:var(--paper);border-radius:24px;padding:18px;border:1px solid var(--line)}
+.about-grid figcaption{margin-top:10px;color:var(--muted)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:96px}
+.stat{padding:30px 8px;text-align:left;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:clamp(2rem,4vw,3.2rem);font-weight:650;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{color:var(--muted);font-size:.9rem}
+
+/* ---------- section heads ---------- */
+.sec{padding:130px 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+.head h2{font-size:clamp(2.2rem,5vw,4rem);font-weight:650;line-height:1;letter-spacing:-.035em}
+.head p{color:var(--muted);max-width:44ch}
+.kick{color:var(--plasma);display:block;margin-bottom:14px}
+
+/* research */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.rarea{background:var(--paper);padding:32px 30px 36px;min-height:220px;transition:background .4s}
+.rarea:hover{background:#f7f5ff}
+.rn{color:var(--faint)}
+.rarea h3{font-size:1.35rem;font-weight:600;margin:28px 0 12px}
+.rarea li{color:var(--muted);font-size:.95rem;padding:3px 0}
+.rail-head{display:flex;justify-content:space-between;align-items:end;margin:100px 0 26px;gap:20px}
+.rail-head h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:600}
+.arrows{display:flex;gap:10px}
+.arrows button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:1.1rem;color:var(--ink);transition:background .2s}
+.arrows button:hover{background:#efeff4}
+.rail{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px max(24px, calc((100vw - 1160px)/2)) 30px;scrollbar-width:none;scroll-behavior:smooth}
+.rail::-webkit-scrollbar{display:none}
+.hl{flex:0 0 min(420px,80vw);scroll-snap-align:start;margin:0;background:var(--paper);border-radius:24px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.hl:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(0,0,0,.25)}
+.hlimg{aspect-ratio:4/3;background:#fff;display:grid;place-items:center;padding:18px;border-bottom:1px solid var(--line)}
+.hlimg img{max-height:100%;object-fit:contain}
+.hl figcaption{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.hl figcaption span{color:var(--muted)}
+.hl h4{font-size:1.08rem;font-weight:600;line-height:1.3;flex:1}
+.hl a{color:var(--plasma);text-decoration:none}
+
+/* facilities (dark) */
+.dark{background:var(--night);color:var(--on-night)}
+.dark .head p,.dark .muted{color:var(--on-night-muted)}
+.fgroup{margin-top:70px}
+.fgroup:first-of-type{margin-top:0}
+.fh{font-size:1.3rem;font-weight:600;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.1)}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fcard{margin:0;border-radius:20px;overflow:hidden;background:var(--night-2);border:1px solid rgba(255,255,255,.06)}
+.fimg{aspect-ratio:4/3;overflow:hidden;background:#fff}
+.fimg img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.fcard:hover .fimg img{transform:scale(1.06)}
+.fcard figcaption{padding:16px 18px 20px;font-size:.95rem;color:var(--on-night)}
+
+/* team */
+.group{position:relative;height:88vh;min-height:520px;overflow:hidden;background:#111}
+.group img{position:absolute;left:0;width:100%;height:125%;top:-12%;object-fit:cover;transform:translate3d(0,var(--gy,0),0);will-change:transform}
+.group::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.6))}
+.group .gtext{position:absolute;left:0;right:0;bottom:56px;z-index:2;color:#fff}
+.group h2{font-size:clamp(2.6rem,7vw,6rem);font-weight:650;letter-spacing:-.04em;line-height:.95}
+.group p{color:rgba(255,255,255,.8);margin-top:10px}
+.pi{display:grid;grid-template-columns:360px 1fr;gap:56px;align-items:start;padding:110px 0 40px}
+.pi .pp{border-radius:26px;overflow:hidden;aspect-ratio:4/5}
+.pi .pp img{width:100%;height:100%;object-fit:cover}
+.pi h3{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:650;letter-spacing:-.03em}
+.pi .role{color:var(--muted);margin:8px 0 26px;font-size:1.05rem}
+.pi .cols{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.pi h5{font-family:var(--mono);font-weight:500;font-size:.75rem;color:var(--plasma);margin:0 0 10px;letter-spacing:.06em;text-transform:uppercase}
+.pi li{font-size:.92rem;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--line)}
+.pi .hon{margin-top:26px;font-size:.92rem;color:var(--muted)}
+.pi .mail{display:inline-block;margin-top:24px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--plasma)}
+.sub{font-size:1.5rem;font-weight:600;margin:80px 0 24px;display:flex;align-items:baseline;gap:12px}
+.sub .mono{color:var(--faint)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,0,0,.3)}
+.pimg{aspect-ratio:1/1;overflow:hidden;background:#eee}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.pcard:hover .pimg img{transform:scale(1.04)}
+.pbody{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px}
+.prole{color:var(--plasma)}
+.pcard h4{font-size:1.12rem;font-weight:600}
+.pnote,.pmail{color:var(--muted);font-size:.85rem}
+.pmail{word-break:break-all}
+.pedu li{font-size:.84rem;color:var(--muted);padding:2px 0}
+.pthesis{font-size:.84rem;color:var(--muted);margin-top:6px}
+.pthesis a{color:var(--ink)}
+.ph{width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#ece8ff,#ffe6f7);color:#6b4bd6;font-weight:600;font-size:2rem}
+.alumni{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.acard{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:start;padding:16px;border-radius:18px;background:var(--paper);border:1px solid var(--line)}
+.aimg{width:72px;height:72px;border-radius:50%;overflow:hidden;background:#eee}
+.aimg img{width:100%;height:100%;object-fit:cover}
+.aimg .ph{font-size:1.2rem}
+.acard h4{font-size:1rem;font-weight:600}
+.acard h4 a{text-decoration:none;border-bottom:1px solid var(--line)}
+.anote{font-size:.85rem;color:var(--muted);margin-top:2px}
+.athesis{font-size:.8rem;color:var(--muted);margin-top:8px}
+.athesis a{color:var(--muted)}
+.others{columns:3 220px;margin-top:26px;color:var(--muted);font-size:.9rem}
+.others li{padding:4px 0;break-inside:avoid}
+
+/* publications */
+.pubbar{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:30px;position:sticky;top:56px;z-index:5;background:rgba(251,251,253,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 0}
+.tabs{display:flex;gap:4px;background:#ececf1;border-radius:999px;padding:4px}
+.tabs button{border:0;background:none;padding:9px 18px;border-radius:999px;font:inherit;font-size:.9rem;cursor:pointer;color:var(--muted);transition:background .3s,color .3s}
+.tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.tabs button small{font-family:var(--mono);color:var(--faint);margin-left:4px}
+.search{flex:0 1 300px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 18px;font:inherit;font-size:.92rem;color:var(--ink)}
+.plist{display:none}
+.plist.on{display:block}
+.pub{display:grid;grid-template-columns:70px 1fr auto;gap:22px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.pub p{font-size:.96rem;color:#3a3a3e}
+.pub b{font-weight:600;color:var(--ink)}
+.py{color:var(--faint)}
+.doi{text-decoration:none;color:var(--plasma);white-space:nowrap}
+.pub.hide{display:none}
+.empty{display:none;color:var(--muted);padding:30px 0}
+
+/* grants/awards */
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:70px}
+.grant{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.gy{color:var(--muted);padding-top:3px}
+.grant h4{font-size:1.02rem;font-weight:600;line-height:1.35}
+.grant p{color:var(--muted);font-size:.88rem;margin-top:6px}
+.gr{color:var(--plasma)}
+.awards li{padding:18px 0;border-bottom:1px solid var(--line);font-size:.95rem;color:#3a3a3e}
+.colh{font-size:1.4rem;font-weight:600;margin-bottom:12px}
+
+/* teaching */
+.courses{display:grid;grid-template-columns:1fr 1fr;column-gap:50px}
+.courses li{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ccode{color:var(--plasma);padding-top:3px}
+.cnote{color:var(--muted);font-size:.85rem}
+
+/* news */
+.nlist{border-left:1px solid var(--line);margin-left:6px}
+.nrow{position:relative;display:grid;grid-template-columns:150px 1fr;gap:24px;padding:16px 0 16px 28px}
+.nrow::before{content:"";position:absolute;left:-5px;top:24px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--plasma)}
+.nd{color:var(--muted);padding-top:3px}
+.nrow p{font-size:.96rem;color:#3a3a3e}
+.nrow a{color:var(--plasma);text-decoration:none;white-space:nowrap}
+.nlist.clip .nrow:nth-child(n+11){display:none}
+.more{margin-top:28px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:11px 22px;font:inherit;font-size:.92rem;cursor:pointer}
+.more:hover{background:#f0f0f4}
+
+/* gallery */
+.masonry{columns:3 300px;column-gap:16px}
+.gitem{display:block;width:100%;border:0;padding:0;margin:0 0 16px;border-radius:18px;overflow:hidden;cursor:zoom-in;background:#ddd;break-inside:avoid}
+.gitem img{width:100%;transition:transform 1s var(--ease)}
+.gitem:hover img{transform:scale(1.04)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,10,14,.92);display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
+.lb.on{display:flex;animation:fade .3s var(--ease)}
+.lb img{max-height:92vh;max-width:92vw;border-radius:14px;animation:pop .45s var(--ease)}
+.lb button{position:absolute;top:18px;right:22px;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;padding:10px 16px;font:inherit;cursor:pointer}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+
+/* join + contact */
+.join{position:relative;overflow:hidden;padding:150px 0 120px;text-align:center}
+.join .glow{opacity:.9;inset:-10%}
+.join .in{position:relative;z-index:2}
+.join h2{font-size:clamp(2.4rem,6vw,5rem);font-weight:650;letter-spacing:-.04em;line-height:1}
+.join p{max-width:60ch;margin:22px auto 0;color:var(--on-night-muted)}
+.cta{display:inline-flex;gap:10px;align-items:center;margin-top:34px;background:var(--on-night);color:var(--night);padding:14px 26px;border-radius:999px;text-decoration:none;font-weight:600;transition:transform .3s var(--ease)}
+.cta:hover{transform:scale(1.04)}
+.emailtxt{display:block;margin-top:14px;color:var(--on-night-muted)}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:110px;text-align:left;border-top:1px solid rgba(255,255,255,.1);padding-top:40px}
+.contact h5{font-family:var(--mono);font-weight:500;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--on-night-muted);margin:0 0 10px}
+.contact p,.contact a{color:var(--on-night);font-size:.98rem;line-height:1.6}
+footer{background:var(--night);color:var(--on-night-muted);padding:30px 0 40px;font-size:.85rem;border-top:1px solid rgba(255,255,255,.08)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer img{height:44px;width:auto;border-radius:50%;background:#fff;padding:2px}
+footer .fl{display:flex;align-items:center;gap:14px}
+
+/* reveal: content is visible at rest; only blocks below the fold are armed by script */
+.rv{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.arm{opacity:0;transform:translate3d(0,36px,0)}
+
+@media (max-width:900px){
+  .links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;gap:0;background:rgba(251,251,253,.97);backdrop-filter:blur(18px);padding:8px 24px 18px;border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  .links a,.nav .links a{color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  .menu{display:block}
+  .about-grid,.two,.pi,.courses{grid-template-columns:1fr}
+  .areas{grid-template-columns:1fr 1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--line)}
+  .pi{gap:30px}.pi .pp{max-width:340px}
+  .contact{grid-template-columns:1fr}
+  .hero{height:190vh}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .areas,.fgrid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{border-right:0}
+  .pub{grid-template-columns:1fr;gap:6px}
+  .nrow{grid-template-columns:1fr;gap:4px}
+  .grant{grid-template-columns:1fr;gap:6px}
+  .pi .cols{grid-template-columns:1fr}
+  .sec{padding:90px 0}
+  .alumni{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .glow{animation:none}
+  .rv,.rv.arm{opacity:1;transform:none;transition:none}
+  .hero{height:auto}.stage{position:relative;height:100vh}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="images/site/logo.jpg" alt="OTFL logo"><span>OTFL</span></a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+    <div class="links" id="links">
+      <a href="#research">Research</a><a href="#facilities">Facilities</a><a href="#team">Team</a><a href="#publications">Publications</a><a href="#grants">Grants</a><a href="#teaching">Teaching</a><a href="#news">News</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="stage">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="htext">
+      <span class="eyebrow mono">MATERIALS ENGINEERING · IIT GANDHINAGAR · SINCE 2011</span>
+      <h1>(Opto)electronics and<br><em>Thin Films</em> Laboratory</h1>
+      <p>Materials Engineering Department</p>
+    </div>
+    <div class="frame">
+      <img src="images/site/{{HERO_PHOTO}}" alt="Multi-target RF magnetron sputtering system in the OTFL lab">
+      <div class="fcap"><span class="mono">IN THE LAB</span><b>{{HERO_CAPTION}}</b></div>
+    </div>
+    <span class="scrollhint mono">Scroll ↓</span>
+  </div>
+</header>
+
+<main>
+<section class="statement" id="about">
+  <div class="wrap">
+    <span class="kick mono">ABOUT THE LAB</span>
+    <p class="say" id="say">{{STATEMENT}}</p>
+    <div class="about-grid">
+      <p class="rv">{{ABOUT}}</p>
+      <figure class="rv"><img src="images/site/{{ABOUT_FIGURE}}" alt="{{ABOUT_FIGURE_ALT}}" loading="lazy"><figcaption class="mono">{{ABOUT_FIGURE_CAPTION}}</figcaption></figure>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-n="2011">2011</b><span>Established</span></div>
+      <div class="stat"><b data-n="{{NJ}}">{{NJ}}</b><span>Journal articles</span></div>
+      <div class="stat"><b data-n="{{NC}}">{{NC}}</b><span>Conference talks</span></div>
+      <div class="stat"><b data-n="{{NP}}">{{NP}}</b><span>Patents</span></div>
+      <div class="stat"><b data-n="{{NG}}">{{NG}}</b><span>Funded projects</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="research" style="padding-top:60px">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">RESEARCH</span><h2>What we work on</h2></div><p>Thin films grown by vacuum and non-vacuum routes, and the interfaces that decide their microstructure and properties.</p></div>
+    <div class="areas">{{RESEARCH}}</div>
+    <div class="rail-head"><h3>Research highlights</h3><div class="arrows"><button id="prev" aria-label="Previous highlight">←</button><button id="next" aria-label="Next highlight">→</button></div></div>
+  </div>
+  <div class="rail" id="rail">{{HIGHLIGHTS}}</div>
+</section>
+
+<section class="sec dark" id="facilities">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">FACILITIES</span><h2>Built for thin films</h2></div><p>From deposition and post-processing to optical, electrical and microstructural characterization.</p></div>
+    {{FACILITIES}}
+  </div>
+</section>
+
+<section id="team">
+  <div class="group" id="group"><img src="images/site/{{GROUP_PHOTO}}" alt="OTFL group photo" loading="lazy"><div class="gtext"><div class="wrap"><span class="mono" style="color:rgba(255,255,255,.7)">TEAM</span><h2>The people<br>behind the films</h2></div></div></div>
+  <div class="wrap">
+    <div class="pi">
+      <div class="pp rv"><img src="images/team/{{PI_PHOTO}}" alt="{{PI_NAME}}" loading="lazy"></div>
+      <div class="rv">
+        <span class="kick mono">GROUP LEADER</span>
+        <h3>{{PI_NAME}}</h3>
+        <p class="role">{{PI_TITLE}}</p>
+        <div class="cols">
+          <div><h5>Education</h5><ul>{{PI_EDU}}</ul></div>
+          <div><h5>Appointments</h5><ul>{{PI_APPT}}</ul></div>
+        </div>
+        <p class="hon"><b style="color:var(--ink);font-weight:600">Honors and awards.</b> {{PI_HON}}</p>
+        <a class="mail mono" href="mailto:{{PI_EMAIL}}">{{PI_EMAIL}}</a>
+      </div>
+    </div>
+    <h3 class="sub">PhD scholars</h3>
+    <div class="cards">{{PHD}}</div>
+    <h3 class="sub">MTech students</h3>
+    <div class="cards">{{MTECH}}</div>
+    <h3 class="sub">Research staff</h3>
+    <div class="cards">{{STAFF}}</div>
+    <h3 class="sub">Alumni</h3>
+    <div class="alumni">{{ALUMNI}}</div>
+    <ul class="others">{{OTHERS}}</ul>
+  </div>
+</section>
+
+<section class="sec" id="publications">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">PUBLICATIONS &amp; PATENTS</span><h2>Published work</h2></div><p>Every paper links to its DOI. Search by author, material or journal.</p></div>
+    <div class="pubbar">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-t="pj" id="tab-j">Journal<small>{{NJ}}</small></button>
+        <button role="tab" aria-selected="false" data-t="pc" id="tab-c">Conference<small>{{NC}}</small></button>
+        <button role="tab" aria-selected="false" data-t="pp" id="tab-p">Patents<small>{{NP}}</small></button>
+      </div>
+      <input class="search" id="q" type="search" placeholder="Search, e.g. VO2, Corrosion Science, 2024" aria-label="Search publications">
+    </div>
+    <ul class="plist on" id="pj">{{JOURNAL}}</ul>
+    <ul class="plist" id="pc">{{CONF}}</ul>
+    <ul class="plist" id="pp">{{PATENTS}}</ul>
+    <p class="empty" id="empty">No matches. Try a shorter search.</p>
+  </div>
+</section>
+
+<section class="sec" id="grants" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">GRANTS &amp; HONORS</span><h2>Funding and recognition</h2></div></div>
+    <div class="two">
+      <div><h3 class="colh">Grants</h3><ul>{{GRANTS}}</ul></div>
+      <div><h3 class="colh">Student awards &amp; honors</h3><ul class="awards">{{AWARDS}}</ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="teaching">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">TEACHING</span><h2>Courses taught</h2></div></div>
+    <ul class="courses">{{COURSES}}</ul>
+  </div>
+</section>
+
+<section class="sec" id="news" style="padding-top:40px">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">NEWS</span><h2>Latest from the lab</h2></div></div>
+    <ul class="nlist clip" id="nlist">{{NEWS}}</ul>
+    <button class="more" id="more" aria-expanded="false">Show all {{NNEWS}} updates</button>
+  </div>
+</section>
+
+<section class="sec" id="gallery" style="padding-top:40px">
+  <div class="wrap">
+    <div class="head"><div><span class="kick mono">GALLERY</span><h2>Life at OTFL</h2></div></div>
+    <div class="masonry">{{GALLERY}}</div>
+  </div>
+</section>
+
+<section class="dark join" id="contact">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap in">
+    <span class="mono" style="color:var(--on-night-muted)">OPENINGS</span>
+    <h2>Join the lab</h2>
+    <p>{{OPENINGS}}</p>
+    <a class="cta" href="mailto:{{EMAIL}}">Email us →</a>
+    <span class="emailtxt mono">{{EMAIL}}</span>
+    <div class="contact">
+      <div><h5>Address</h5><p>{{ADDRESS}}</p></div>
+      <div><h5>Email</h5><p><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p></div>
+      <div><h5>Find us</h5><p><a href="{{MAPS}}">IIT Gandhinagar, Palaj, Gujarat ↗</a></p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fl"><img src="images/site/iitgn.jpg" alt="IIT Gandhinagar logo"><span>(Opto)electronics and Thin Films Laboratory · Materials Engineering · IIT Gandhinagar</span></div>
+    <a href="#top" style="text-decoration:none">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button id="lbx">Close ✕</button><img id="lbimg" alt="Enlarged gallery photo"></div>
+
+<script>
+(()=>{
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const nav = $('#nav'), hero = $('.hero'), say = $('#say'), group = $('#group');
+
+// split the statement into words for the scroll-lit effect
+let words = [];
+if (!reduce) {
+  say.innerHTML = say.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' ');
+  words = [...say.querySelectorAll('.w')];
+} else say.classList.add('static');
+
+let ticking = false;
+function frame(){
+  ticking = false;
+  const vh = innerHeight;
+  // hero expand
+  const r = hero.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
+  if (!reduce) hero.style.setProperty('--p', p.toFixed(4));
+  nav.classList.toggle('solid', r.bottom < 64);
+  // statement words
+  if (words.length) {
+    const s = say.getBoundingClientRect();
+    const prog = Math.min(1, Math.max(0, (vh * 0.85 - s.top) / (s.height + vh * 0.35)));
+    const n = Math.round(prog * words.length);
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+  }
+  // group photo parallax
+  if (!reduce) {
+    const g = group.getBoundingClientRect();
+    if (g.bottom > 0 && g.top < vh) group.style.setProperty('--gy', ((g.top) * -0.12).toFixed(1) + 'px');
+  }
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, {passive:true});
+addEventListener('resize', frame);
+frame();
+
+// reveal: arm only what is below the fold, so the first frame is complete
+if (!reduce && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('arm'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
+  $$('.rv').forEach((el, i) => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('arm'); el.style.transitionDelay = (i % 3) * 70 + 'ms'; io.observe(el); } });
+  // count-up stats
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; cio.unobserve(e.target);
+    const b = e.target, end = +b.dataset.n, start = end > 1000 ? end - 40 : 0, t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / 1200); b.textContent = Math.round(start + (end - start) * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), {threshold:.6});
+  $$('.stat b').forEach(b => { if (b.getBoundingClientRect().top > innerHeight) cio.observe(b); });
+}
+
+// active nav link
+const secs = $$('main section[id]');
+const lio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { $$('.links a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }), {rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s => lio.observe(s));
+
+// mobile menu
+const menu = $('#menu'), links = $('#links');
+menu.addEventListener('click', () => { const o = links.classList.toggle('open'); menu.setAttribute('aria-expanded', o); menu.textContent = o ? 'Close' : 'Menu'; });
+links.addEventListener('click', e => { if (e.target.tagName === 'A') { links.classList.remove('open'); menu.textContent = 'Menu'; menu.setAttribute('aria-expanded', false); } });
+
+// highlights rail
+const rail = $('#rail');
+const by = d => rail.scrollBy({left: d * Math.min(rail.clientWidth * .8, 440), behavior: reduce ? 'auto' : 'smooth'});
+$('#prev').onclick = () => by(-1); $('#next').onclick = () => by(1);
+
+// publications tabs + search
+const tabs = $$('.tabs button'), q = $('#q'), empty = $('#empty');
+function filter(){
+  const list = $('.plist.on'), term = q.value.trim().toLowerCase(); let shown = 0;
+  list.querySelectorAll('.pub').forEach(li => { const ok = !term || li.dataset.s.includes(term) || li.dataset.y === term; li.classList.toggle('hide', !ok); if (ok) shown++; });
+  empty.style.display = shown ? 'none' : 'block';
+}
+tabs.forEach(b => b.addEventListener('click', () => {
+  tabs.forEach(x => x.setAttribute('aria-selected', x === b)); $$('.plist').forEach(l => l.classList.toggle('on', l.id === b.dataset.t)); filter();
+}));
+q.addEventListener('input', filter);
+
+// news
+const more = $('#more'), nl = $('#nlist'), label = more.textContent;
+more.onclick = () => { const c = nl.classList.toggle('clip'); more.textContent = c ? label : 'Show fewer'; more.setAttribute('aria-expanded', !c); };
+
+// lightbox
+const lb = $('#lb'), lbimg = $('#lbimg');
+$$('.gitem').forEach(g => g.addEventListener('click', () => { lbimg.src = g.dataset.full; lb.classList.add('on'); $('#lbx').focus(); }));
+const close = () => lb.classList.remove('on');
+lb.addEventListener('click', close); addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

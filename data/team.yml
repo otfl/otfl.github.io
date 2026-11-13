@@ -1,0 +1,234 @@
+# TEAM. Photos go in images/team/ and are named in "photo:".
+# To add a person: copy an existing block (from "- name:" down), paste it, edit it.
+# To move someone to alumni: cut their block and paste it under "alumni:", then change "details" to a "note".
+
+group_leader:
+  name: Prof. Emila Panda
+  title: Professor and Head, Materials Engineering, IIT Gandhinagar
+  photo: emila-panda.jpg
+  email: emila@iitgn.ac.in
+  education:
+  - Ph.D., Max Planck Institute for Metals Research Germany, Department of Materials Science, 2009
+  - M.Tech, IIT Kanpur, India, Department of Materials and Metallurgical Engineering, 2003
+  - B.E., NIT, Rourkela, India, Department of Metallurgical Engineering, 2000
+  appointments:
+  - Professor and Head, Materials Engineering, IIT Gandhinagar, India, 2024 to present
+  - Associate Head, Materials Engineering, IIT Gandhinagar, India, 2023 to 2024
+  - Associate Professor, Materials Engineering, IIT Gandhinagar, India, 2016 to 2024
+  - Assistant Professor, Materials Engineering, IIT Gandhinagar, India, 2011 to 2016
+  - Postdoctoral Researcher, MPI Halle (Saale), Germany, 2009 to 2010
+  - Scientist B, NML (CSIR), Jamshedpur, India, 2004 to 2006
+  - Assistant Manager, KCSSL, Pune, India, 2003 to 2004
+  - JRF, RRL (CSIR), Bhubaneswar, India, 2000 to 2001
+  honors: Research showcase at IIT R&D Fair, IInvenTive, IIT Delhi (2022); JSPS Invitational Fellowship (short term), Japan (May-June, 2022); DAAD Fellowship, Germany (June-July, 2019); Visiting research fellow at JAIST, Japan (May to June, 2018 and 2017); Excellence-in-Research Fellowship, IIT Gandhinagar, India (2011-2014).
+phd_scholars:
+- name: Kartikey Chaturvedi
+  photo: kartikey-chaturvedi.jpg
+- name: Priyanka Hemani
+  photo: priyanka-hemani.jpg
+- name: Dushyant Dabhi
+  photo: dushyant-dabhi.jpg
+  details:
+  - PhD, Joined 2023
+  - MSc, Physics, School of Sciences, Gujarat University, 2022
+  - BSc, Physics, St. Xavier's College (Autonomous), affiliated to Gujarat University, 2020
+- name: Sarmistha Bhattacharjee
+  photo: sarmistha-bhattacharjee.jpg
+  details:
+  - PhD, Joined 2023
+  - MSc Applied Physics, NIT Silchar Assam, 2014
+  - BSc Physics, Cotton College Guwahati, Gauhati University, Assam, 2012
+- name: Pooja Hingu
+  photo: pooja-hingu.jpg
+  details:
+  - PhD, Joined 2024
+  - MSc, Physics, The Institute of Science, Mumbai, 2021
+  - BSc, Physics, Mumbai University, 2019
+- name: Abhinav Rana
+  photo: abhinav-rana.jpg
+  details:
+  - PhD, Joined 2025
+  - BTech, Materials Science and Engineering, NIT Hamirpur, 2024
+- name: Raju Beerasent
+  photo: raju-beerasent.jpg
+  details:
+  - PhD (CDP), Joined 2025
+  - MTech, VLSI system design, Annamacharya, Institute of Technology and Sciences, affiliated to JNTU Anantapur, 2016
+  - BTech, Electronics and Communication Engineering, Golden Valley Integrated Campus, Affiliated to JNTU Anantapur, 2014
+- name: Subrat Kumar Das
+  photo: subrat-kumar-das.jpg
+  details:
+  - PhD (CDP), joined 2025
+  - BE, Material Science and Metallurgy, AMIE, 2019
+  - Diploma, Metallurgical Engineering, UGIE, 2010
+- name: Ajay Kumavat
+  photo: ajay-kumavat.jpg
+  details:
+  - PhD, Joined 2025
+  - MSc, Physics, Sant Longowal Institute of Engineering and Technology, 2024
+  - BSc, Physics, Rajasthan University, 2022
+mtech_students:
+- name: Vignesh Pillayar
+  photo: vignesh-pillayar.jpg
+  details:
+  - MTech, Joined 2025
+  - BTech, Electronics and Communication Engineering, PES University, Bengaluru, 2024
+research_staff:
+- name: Dr. Krishna Manwani
+  photo: krishna-manwani.jpg
+  status: Currently Post Doc
+  email: krishmanwani@alumni.iitgn.ac.in
+  details:
+  - PhD, Materials Engineering (MSE), IIT Gandhinagar, Nov 2020
+  - BTech, Ceramics Engineering, University College of Engineering and Technology, Bikaner, 2011
+  thesis: 'Microstructure influenced variation in the electronic properties of the functional materials: the case of Nb doped anatase and TbFe2'
+  thesis_type: PhD Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/7047
+- name: Dr. Prajna Paramita Mohapatra
+  photo: prajna-paramita-mohapatra.jpg
+  status: Currently Post Doc
+  email: prajna@iitgn.ac.in
+  details:
+  - PhD, Physics, IIT Guwahati, 2023
+  thesis: Development of lithium ferrite-based ceramics for microwave applications
+  thesis_type: PhD Thesis
+- name: Sejal Bichave
+  photo: sejal-bichave.jpg
+  status: Currently JRF
+  email: sejal.bichave@iitgn.ac.in
+  details:
+  - MSc, Physics, School of Sciences, Gujarat University, 2024
+  - BSc, Physics, St. Xavier's College (Autonomous), affiliated to Gujarat University, 2022
+- name: Neha Catherine
+  photo: neha-catherine.jpg
+  status: Currently JRF
+  email: 24250062@iitgn.ac.in
+  details:
+  - MTech, Materials Engineering Department, IIT Gandhinagar, 2026
+  - BTech, Material Science and Engineering Department, NIT Calicut, 2024
+alumni:
+- name: Dr. Mayank Dotiyal
+  photo: mayank-dotiyal.jpg
+  note: PhD 2025; currently a Postdoc researcher at RIES, Hokkaido University
+- name: Dr. Shivam Shukla
+  photo: shivam-shukla.jpg
+  note: PhD 2025; currently an ad hoc faculty at NIT Hamirpur
+- name: Dr. Mittireddi Ravi Teja
+  photo: mittireddi-ravi-teja.jpg
+  note: PhD 2024; currently a Postdoc at TU Bergakademie Freiberg, Germany
+  link: https://scholar.google.com/citations?hl=en&user=s5qXGHsAAAAJ
+- name: Dr. Krishna Manwani
+  photo: krishna-manwani.jpg
+  note: PhD 2020; currently a Postdoc at IIT Gandhinagar
+  thesis: 'Microstructure influenced variation in the electronic properties of the functional materials: the case of Nb doped anatase and TbFe2'
+  thesis_type: PhD Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/7047
+- name: Dr. Tvarit A. Patel
+  photo: tvarit-a-patel.jpg
+  note: PhD 2020; currently Asst. Prof. at IAR, Gandhinagar
+  thesis: Interrelation between electronic structure, microstructure and optoelectronic properties of Al-doped ZnO and Cu2-xS
+  thesis_type: PhD Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/5927
+- name: Dr. Narendra Bandaru
+  photo: narendra-bandaru.jpg
+  note: PhD 2019; currently a Postdoc at Aarhus University, Denmark
+  thesis: Microstructure modulated optoelectronic properties of Al-doped ZnO and CuInGaSe2 films using cost-effective, scalable deposition techniques
+  thesis_type: PhD Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/5944
+- name: Dr. Chetan C. Singh
+  photo: chetan-c-singh.jpg
+  note: PhD 2018; currently a principal thin film engineer at SuperQ Technologies India Pvt Ltd
+  thesis: 'Microstructure influenced bulk optoelectronic and surface electrical properties of low cost materials for photovoltaic application: the case of Al-doped ZnO and SnS'
+  thesis_type: PhD Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/6880
+- name: Swinkle Rose
+  photo: swinkle-rose.jpg
+  note: MTech 2026; Currently working at Micron Int. Ltd., Ahmedabad
+- name: Neha Catherine
+  photo: neha-catherine.jpg
+  note: MTech 2026; Currently working as a JRF at IIT Gandhinagar
+- name: Smruti Prakash Behera
+  photo: smruti-prakash-behera.jpg
+  note: MTech 2024; Currently working at Harsha Engineers Int. Ltd., Ahmedabad
+- name: Ms. Remiya Roy
+  photo: remiya-roy.jpg
+  note: MTech 2022; currently at General Electric
+  thesis: Developing non-stoichiometric crystalline and amorphous TiO2 for dye degradation applications
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/8063
+- name: Dr. Rohit Dahule
+  photo: rohit-dahule.jpg
+  note: MTech 2021; Currently a PostDoc at NIMS, Japan
+  thesis: Surface study of Cu2SnS3 using first principle density functional theory
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/6090
+- name: Dr. Abhishek Raghav
+  photo: abhishek-raghav.jpg
+  note: MTech 2019; Currently a PostDoc at Scuola Internazionale Superiore di Studi Avanzati (SISSA
+  thesis: Electronic structure and defect state calculations for undoped and (Nb, Ta)-doped anatase using density functional theory
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/4758
+- name: Mr. Dhrutiman Dey
+  photo: dhrutiman-dey.jpg
+  note: MTech 2019; currently a PhD at IIT Guwahati
+  thesis: 'Undoped and Nb-doped anatase thin films: thickness induced variation in the microstructure, electronic structure and optoelectronic properties'
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/4768
+- name: Ms. Priyanka Rawat
+  photo: priyanka-rawat.jpg
+  note: M.Tech 2018
+  thesis: Effect of oxygen content in seed layer on microstructure and optoelectronic properties of NB-doped and undoped anatase TIO2 thin films
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/4152
+- name: Mr. Rishi Dhawan
+  photo: rishi-dhawan.jpg
+  note: MTech 2018; currently at Testbook
+  thesis: 'Fabrication near U V transparent conductor by bandgap engineering: effect of Mg addition on the undoped and Al-doped Zno thin films'
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/4155
+- name: Mr. Ajay Singh
+  photo: ajay-singh.jpg
+  note: M.Tech 2018
+  thesis: Effect of boron addition in modulating the optoelectronic properties of undoped and Al-doped Zno thin films
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/4146
+- name: Mr. Darshan Ajmera
+  photo: darshan-ajmera.jpg
+  note: M.Tech 2015; currently a Senior Analytics Engineer at The Modern Data Company
+  thesis: Thermodynamics of ultra-thin oxide overgrowths on binary Al-based alloys
+  thesis_type: MTech Thesis
+  thesis_link: https://repository.iitgn.ac.in/handle/123456789/1835
+- name: Mr. Soham Sirodhkar
+  photo: soham-sirodhkar.jpg
+  note: BTech 2022; currently a PhD at University of Texas, Dallas
+- name: Mr. Rushik Desai
+  photo: rushik-desai.jpg
+  note: BTech 2022; currently a PhD at Purdue University, West Lafayette, Indiana
+- name: Mr. Krutarth Khot
+  note: BTech 2021; currently a PhD at Purdue University, West Lafayette, Indiana
+  details:
+  - Mr. Deepak Dwivedi (JRF)
+  - Mr. Vaibhav Bhavsar (JRF; currently at Bharat Forge)
+  - Ms. Aditi Thanki (JRF; currently at University of Leuven)
+  - Ms. Karishma Jain (JRF; currently at IIT Kanpur)
+  - Mr. Jit Sarkar (NIT Durgapur)
+  - Ms. Garikapati Nagasarvari (currently at IIT Madras)
+  - Mr. Jugal Mehta (B.Tech)
+  - Mr. Dillip Singh (B.Tech)
+  - Mr. Aditya Kumar (B.tech)
+  - Mr. Bhoopendra Kumar (B.Tech)
+  - Mr. Aman Singh (B.Tech)
+  - Mr. Abhiroop Mishra (B.Tech)
+other_alumni:
+- Mr. Deepak Dwivedi (JRF)
+- Mr. Vaibhav Bhavsar (JRF; currently at Bharat Forge)
+- Ms. Aditi Thanki (JRF; currently at University of Leuven)
+- Ms. Karishma Jain (JRF; currently at IIT Kanpur)
+- Mr. Jit Sarkar (NIT Durgapur)
+- Ms. Garikapati Nagasarvari (currently at IIT Madras)
+- Mr. Jugal Mehta (B.Tech)
+- Mr. Dillip Singh (B.Tech)
+- Mr. Aditya Kumar (B.tech)
+- Mr. Bhoopendra Kumar (B.Tech)
+- Mr. Aman Singh (B.Tech)
+- Mr. Abhiroop Mishra (B.Tech)

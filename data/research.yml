@@ -1,0 +1,69 @@
+# RESEARCH areas and the sliding "Research highlights" strip.
+# Highlight images go in images/highlights/
+
+areas:
+- title: Electronic materials
+  items:
+  - 'Transparent electrodes: doped ZnO, TiO2'
+  - 'Thermochromic coatings: undoped and doped VO2'
+  - 'Semiconductor diodes: CuxS, SnS, CIGS, CZTS, Cu2SnS3'
+- title: Oxidation of magnetic materials
+  items:
+  - 'Magnetostrictive material: TbFe2'
+  - 'Permanent magnets: SmCo5, SmPrCo5, Sm2Co17'
+- title: SIS devices
+  items:
+  - Superconductor–insulator–superconductor thin-film stacks
+- title: Thermodynamics & kinetics
+  items:
+  - Phase transformation in thin films
+- title: Microstructure evaluation
+  items:
+  - Linking microstructure to (opto)electronic properties
+- title: Extreme environments
+  items:
+  - Material design for extreme environments
+highlights:
+- image: ga07.jpg
+  title: Optically transparent heat-insulation coating through chemical strain modulation
+  journal: Applied Surface Science, 2026
+  link: https://doi.org/10.1016/j.apsusc.2025.164660
+- image: ga09.jpg
+  title: Dopant-induced changes in electronic structure, crystal structure and electrical properties of VO2
+  journal: Journal of Alloys and Compounds, 2026
+  link: https://doi.org/10.1016/j.jallcom.2026.189095
+- image: ga17.jpg
+  title: Thin, highly transparent visible/near-infrared Ta-doped TiO2 electrode
+  journal: 'J Mater Sci: Mater Electron, 2023'
+  link: https://doi.org/10.1007/s10854-022-09672-x
+- image: ga14.jpg
+  title: Non-stoichiometric amorphous TiOx as a transparent anti-viral surface coating
+  journal: Journal of Alloys and Compounds, 2021
+  link: https://doi.org/10.1016/j.jallcom.2021.160610
+- image: ga13.jpg
+  title: Microstructure-induced functionality in titanium dioxide thin films
+  journal: Materials Characterization, 2023
+  link: https://doi.org/10.1016/j.matchar.2023.112818
+- image: ga12.jpg
+  title: Formation, dissociation and phase separation of CuFe2O4 during oxidation of Sm2(Co,Fe,Cu,Zr)17
+  journal: Corrosion Science, 2024
+  link: https://doi.org/10.1016/j.corsci.2023.111518
+- image: ga08.jpg
+  title: Oxide overgrowth and its influence on SmPrCo5 magnetic properties
+  journal: J. Magn. Magn. Mater., 2023
+  link: https://doi.org/10.1016/j.jmmm.2023.170966
+- image: ga10.jpg
+  title: Temperature-induced oxidation in Sm2(Co,Fe,Cu,Zr)17 alloy systems
+  journal: Corrosion Science
+- image: ga18.jpg
+  title: Anomalies in the bulk and surface electronic properties of SnS
+  journal: J. Mater. Chem. C, 2022
+  link: https://doi.org/10.1039/D1TC04738H
+- image: ga15.jpg
+  title: Annealing-driven Nb dopant activation in anatase thin films
+  journal: 'J Mater Sci: Mater Electron, 2021'
+  link: https://doi.org/10.1007/s10854-020-05076-x
+- image: ga16.jpg
+  title: Thickness-induced changes in the bands of undoped and Nb-doped anatase TiO2
+  journal: Mater. Sci. Semicond. Process., 2021
+  link: https://doi.org/10.1016/j.mssp.2021.106048
